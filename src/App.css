@@ -1,38 +1,89 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #181b20;
+}
+
+.react-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10vw;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50dvh;
+  width: 50dvw;
+  text-align: center;
+  background-color: #23272f;
+  border-radius: 1vh;
+  box-shadow: 8px 8px;
+}
+
+#title {
+  font-size: 3rem;
+  color: #f6f7f9;
+  text-shadow: 1px 1px black;
+}
+
+#results {
+  font-size: 1.6rem;
+  background-color: #374151;
+  color: #f6f7f9;
+  border: 2px solid #181b20;
+  margin: 20px;
+  border-radius: 1vh;
+  padding: 2vh;
+  transition: ease-in-out 2s;
+  box-shadow: 1px 1px black;
+}
+
+button, input, select {
+  margin: 0 2px;
+  text-align: center;
+  font-size: 1rem;
+  padding: 20px;
+  border: 2px solid #181b20;
+  border-radius: 1vh;
+  background-color: #374151;
+  color: #f6f7f9;
+  transition: ease-in-out 0.25s;
+  box-shadow: 1px 1px black;
+}
+
+option {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button:hover, input:hover, select:hover {
+  background-color: #087ea4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:focus, input:focus, select:focus {
+  background-color: #149eca;
+  outline: 0; /* removes the blue border on click */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* removing the arrows from number inputs, chromium */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* removing the arrows from number inputs, firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
