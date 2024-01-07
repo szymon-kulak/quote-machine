@@ -1,15 +1,76 @@
+$box-color: whitesmoke;
+$btn-size: 1.5rem;
+$color-change: ease-in-out 1s;
+
 .App {
   text-align: center;
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(14px + 2vmin);
+  
+  color: white;
+  transition: background-color $color-change, color $color-change;
+}
+
+#quote-box {
+  width: 40dvw;
+  padding: 25px;
+  background-color: $box-color;
+  border-radius: 20px;
+}
+
+#author {
+  text-align: end;
+}
+
+.buttons {
+  display: flex;
+  justify-content: right;
+  min-height: 40px;
+}
+
+#tweet-quote {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  color: $box-color;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10px;
+  transition: $color-change;
+  margin: 5px;
+}
+
+#new-quote {
+  color: $box-color;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  font-size: $btn-size;
+  cursor: pointer;
+  transition: $color-change;
+  margin: 5px;
 }
 
 
+@media (max-aspect-ratio: 4/3) {
+  #quote-box {
+    width: 60dvw;
+  }
+}
+
+@media (max-aspect-ratio: 9/16) {
+  #quote-box {
+    width: 80dvw;
+  }
+
+  .buttons {
+    flex-direction: column-reverse;
+  }
+}

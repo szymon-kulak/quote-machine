@@ -1,32 +1,70 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.scss';
+import Colors from './colorsArray.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
+
+let quotesJSON = "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
 
 function App() {
   
   const [quote, setQuote] = useState("Every child is an artist. The problem is how to remain an artist once he grows up.");
   const [author, setAuthor] = useState("Pablo Picasso");
-  const [quoteNumber, setRandomNumber] = useState(0);
-  
-  const getRandomNumber = function() {
-    let rand = Math.floor(Math.random() * quotesArray.length);
-    setRandomNumber(rand);
-    setQuote(quotesArray[rand].quote);
-    setAuthor(quotesArray[rand].author);
+  const [quotesArray, setQuotesArray] = useState(null);
+  const [themeColor, setColor] = useState("#FF6633");
+
+  const fetchQuotes = async (url) => {
+    const response = await fetch(url);
+    const parsed = await response.json();
+    setQuotesArray(parsed.quotes);
   }
 
-  const quotesArray = [{quote: "Every child is an artist. The problem is how to remain an artist once he grows up.", author: "Pablo Picasso"},{quote: "You miss 100% of the shots you don’t take.", author: "Wayne Gretzky"}, {quote: "The only person you are destined to become is the person you decide to be.", author: "Ralph Waldo Emerson"}, {quote: "Certain things catch your eye, but pursue only those that capture the heart.", author: "Ancient Indian Proverb"}, {quote: "If you hear a voice within you say “you cannot paint,” then by all means paint and that voice will be silenced.", author: "Vincent Van Gogh"}];
+  useEffect(() => {
+    fetchQuotes(quotesJSON);
+  })
+
+  const randomColor = function() {
+    let rand = Math.floor(Math.random() * Colors.length);
+    setColor(Colors[rand]);
+  }
+  
+  const getRandomQuote = function() {
+    let rand = Math.floor(Math.random() * quotesArray.length);
+    setQuote(quotesArray[rand].quote);
+    setAuthor(quotesArray[rand].author);
+    randomColor();
+  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Quote Number: {quoteNumber + 1}</h1>
-        <p>
-          {quote}
-        </p>
-        <p>
-          - {author}
-        </p>
-        <button onClick={()=> getRandomNumber()}>Change Quote</button>
+      <header 
+      className="App-header" 
+      style={{backgroundColor: themeColor, 
+        color: themeColor}}
+      >
+        <div id="quote-box">
+          <p 
+          id="text"
+          ><FontAwesomeIcon icon={ faQuoteLeft } /> {quote}</p>
+          <p 
+          id="author"
+          >- {author}</p>
+          <div className="buttons">
+            <a
+            id="tweet-quote"
+            href={encodeURI(`https://twitter.com/intent/tweet?text="${quote}" - ${author}`)}
+            target='_blank'
+            rel="noreferrer"
+            style={{backgroundColor: themeColor}}
+            ><FontAwesomeIcon icon={ faXTwitter } /></a>
+            <button
+            id="new-quote"
+            onClick={()=> getRandomQuote()}
+            style={{backgroundColor: themeColor}}
+            >Change Quote</button>
+          </div>
+        </div>
       </header>
     </div>
   );
