@@ -5,3 +5,5 @@ A random quote generator I made for my freeCodeCamp front-end libraries certific
 Technologies used: 
 - React (HTML, JavaScript)
 - SASS (CSS)
+
+Live App available at [Github Pages](https://szymon-kulak.github.io/quote-machine/)
