@@ -3,14 +3,15 @@ import './App.scss';
 import Colors from './colorsArray.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
+// freeCodeCamp quotes array
 let quotesJSON = "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
 
 function App() {
   
-  const [quote, setQuote] = useState("Every child is an artist. The problem is how to remain an artist once he grows up.");
-  const [author, setAuthor] = useState("Pablo Picasso");
+  const [quote, setQuote] = useState("There is only one way to avoid criticism: do nothing, say nothing, and be nothing.");
+  const [author, setAuthor] = useState("Aristotle");
   const [quotesArray, setQuotesArray] = useState(null);
   const [themeColor, setColor] = useState("#FF6633");
 
