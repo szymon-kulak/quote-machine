@@ -41,8 +41,10 @@ function App() {
     <div className="App">
       <header 
       className="App-header" 
-      style={{backgroundColor: themeColor, 
-        color: themeColor}}
+      style={{
+        backgroundColor: themeColor, 
+        color: themeColor
+     }}
       >
         <div id="quote-box">
           <p 
